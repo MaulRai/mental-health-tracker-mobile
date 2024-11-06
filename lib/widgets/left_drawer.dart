@@ -30,7 +30,6 @@ class LeftDrawer extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Text(
                     "Ayo jaga kesehatan mentalmu setiap hari disini!",
-                    // TODO: Tambahkan gaya teks dengan center alignment, font ukuran 15, warna putih, dan weight biasa
                     style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                 ),
@@ -57,7 +56,7 @@ class LeftDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MoodEntryFormPage(),
+                    builder: (context) => const MoodEntryFormPage(),
                   ));
             },
           ),
