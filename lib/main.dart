@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
         CookieRequest request = CookieRequest();
         return request;
       },
+      
       child: MaterialApp(
         title: 'Mental Health Tracker',
         theme: ThemeData(
