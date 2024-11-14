@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mental_health_tracker/screens/list_moodentry.dart';
 import 'package:mental_health_tracker/screens/login.dart';
 import 'package:mental_health_tracker/screens/moodentry_form.dart';
+import 'package:mental_health_tracker/screens/list_moodentry.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 
@@ -31,28 +31,28 @@ class ItemCard extends StatelessWidget {
       child: InkWell(
         // Aksi ketika kartu ditekan.
         onTap: () async {
-          // Memunculkan SnackBar ketika diklik
+          // Menampilkan pesan SnackBar saat kartu ditekan.
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
-
           // Navigate ke route yang sesuai (tergantung jenis tombol)
-          if (item.name == "Lihat Mood") {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const MoodEntryPage()),
-            );
-          } else if (item.name == "Tambah Mood") {
+          if (item.name == "Tambah Mood") {
+            //* Navigator.push untuk melakukan navigasi ke MaterialPageRoute yang mencakup MoodEntryFormPage.
             Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const MoodEntryFormPage(),
                 ));
+          } else if (item.name == "Lihat Mood") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const MoodEntryPage()),
+            );
           } else if (item.name == "Logout") {
             final response = await request.logout(
                 // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
-                "http://[APP_URL_KAMU]/auth/logout/");
+                "http://127.0.0.1:8000/auth/logout/");
             String message = response["message"];
             if (context.mounted) {
               if (response['status']) {
